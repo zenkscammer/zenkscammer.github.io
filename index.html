@@ -8,177 +8,8 @@
     <title>NexByte Monitor | Download</title>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5008812499182568"
       crossorigin="anonymous"></script>
-    <style>
-      :root {
-        color-scheme: dark;
-        --ink: #f3f2e9;
-        --muted: #a6b0a8;
-        --base: #101716;
-        --panel: #192220;
-        --widget-bg: #101614;
-        --line: #34423d;
-        --lime: #c9f36a;
-        --orange: #ff875e;
-      }
-
-      * { box-sizing: border-box; }
-
-      body {
-        min-height: 100vh;
-        margin: 0;
-        background-color: var(--base);
-        background-image: linear-gradient(145deg, rgba(201, 243, 106, .035), transparent 42%), repeating-linear-gradient(135deg, rgba(255, 255, 255, .012) 0 1px, transparent 1px 12px);
-        color: var(--ink);
-        font-family: "Segoe UI", "Trebuchet MS", sans-serif;
-      }
-
-      main {
-        width: min(100% - 40px, 1080px);
-        min-height: 100vh;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-      }
-
-      header {
-        border-bottom: 1px solid var(--line);
-      }
-
-      .header-bar {
-        min-height: 88px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: .02em; }
-      .brand-mark { width: 40px; height: 40px; display: grid; place-items: center; flex: 0 0 40px; }
-      .brand-mark img { display: block; width: 40px; height: 40px; object-fit: contain; }
-      .top-label { color: var(--muted); font: 11px/1.4 Consolas, monospace; letter-spacing: .1em; text-transform: uppercase; }
-      .opening { max-width: 860px; padding: 28px 0 24px; border-bottom: 1px solid var(--line); }
-      .opening-title { max-width: none; margin: 0 0 14px; color: var(--lime); font-size: 18px; line-height: 1.3; letter-spacing: 0; }
-      .opening-copy { color: var(--muted); font-size: 14px; line-height: 1.65; }
-      .opening-copy p { margin: 0 0 10px; }
-      .opening-copy .signoff { margin-top: 14px; color: var(--ink); }
-      .content {
-        flex: 0 0 auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 22px;
-        padding: 48px 0 68px;
-      }
-
-      .test-intro { max-width: 520px; text-align: center; }
-      .test-kicker { display: block; margin-bottom: 8px; color: var(--lime); font: 11px/1.4 Consolas, monospace; }
-      .test-title { margin: 0 0 10px; font-size: 30px; line-height: 1.2; }
-      .intro { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.7; }
-
-      .speedtest-panel { width: min(100%, 780px); padding: 18px 0 4px; border-block: 1px solid var(--line); }
-      .speedtest-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .speedtest-metric { min-width: 0; min-height: 112px; display: flex; flex-direction: column; justify-content: space-between; gap: 12px; padding: 14px 20px; }
-      .speedtest-metric + .speedtest-metric { border-left: 1px solid var(--line); }
-      .speedtest-metric-label { color: var(--muted); font-size: 13px; }
-      .speedtest-reading { display: flex; align-items: baseline; gap: 7px; white-space: nowrap; }
-      .speedtest-reading strong { color: var(--ink); font: 400 32px/1 Consolas, monospace; font-variant-numeric: tabular-nums; }
-      .speedtest-reading span { color: var(--muted); font-size: 12px; }
-      .speedtest-button { min-width: 190px; min-height: 48px; display: block; padding: 0 20px; margin: 18px auto 10px; border: 0; background: var(--lime); color: #17200f; font: inherit; font-weight: 700; cursor: pointer; }
-      .speedtest-button:hover { background: #d9ff83; }
-      .speedtest-button:focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; }
-      .speedtest-button:disabled { cursor: wait; opacity: .7; }
-      .speedtest-status { min-height: 20px; margin: 0; color: var(--lime); font-size: 13px; text-align: center; }
-      .speedtest-note { margin: 12px 0 0; color: var(--muted); font-size: 11px; line-height: 1.5; text-align: center; }
-
-      .download-panel { width: min(100%, 520px); padding: 26px; border: 1px solid var(--line); background: var(--panel); }
-      .file-heading { display: flex; align-items: center; gap: 16px; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
-      .file-icon { width: 50px; height: 58px; display: grid; place-items: center; border: 1px solid #61705e; color: var(--lime); font: 11px Consolas, monospace; position: relative; }
-      .file-icon::after { content: ""; position: absolute; top: -1px; right: -1px; width: 13px; height: 13px; border-left: 1px solid #61705e; border-bottom: 1px solid #61705e; background: var(--panel); }
-      h2 { margin: 0 0 7px; font-size: 18px; }
-      .file-name { color: var(--muted); font: 12px Consolas, monospace; overflow-wrap: anywhere; }
-      .details { display: flex; justify-content: space-between; padding: 19px 0 24px; color: var(--muted); font-size: 13px; }
-      .details strong { color: var(--ink); font-weight: 500; }
-      .download-form { display: grid; gap: 10px; }
-      .download-button { width: 100%; min-height: 56px; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 0 18px; border: 0; background: var(--lime); color: #17200f; font: inherit; font-weight: 750; cursor: pointer; transition: background-color .18s ease, transform .18s ease; }
-      .download-button:hover { background: #d9ff83; transform: translateY(-2px); }
-      .download-button:focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; }
-      .download-button:disabled { cursor: wait; opacity: .7; }
-      .download-button span { font-size: 20px; line-height: 1; }
-      .tracking-note, .tracking-status { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
-      .tracking-status { min-height: 18px; color: var(--lime); }
-      .notice { display: flex; gap: 10px; margin: 17px 0 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
-      .notice b { color: var(--orange); font-weight: 600; }
-
-      .preview-section { padding: 0 0 84px; }
-      .preview-heading { max-width: 780px; display: flex; flex-direction: column; align-items: center; gap: 8px; margin: 0 auto 18px; text-align: center; }
-      .preview-heading h2 { margin: 0; font-size: 21px; }
-      .preview-caption { color: var(--muted); font: 11px Consolas, monospace; }
-      .preview-stage {
-        max-width: 780px;
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 14px;
-        padding: 12px;
-        margin: 0 auto;
-        border: 1px solid var(--line);
-        background: var(--panel);
-      }
-      .preview-item { min-width: 0; min-height: 270px; display: grid; grid-template-rows: 1fr auto; gap: 12px; padding: 12px; margin: 0; border: 1px solid var(--line); background: var(--base); scroll-snap-align: start; }
-      .preview-image { display: block; max-width: 100%; max-height: 230px; width: auto; height: auto; justify-self: center; align-self: center; object-fit: contain; }
-      .preview-item figcaption { color: var(--muted); font: 11px Consolas, monospace; }
-
-      .owner-contact { display: grid; justify-items: center; gap: 6px; padding: 18px 0 22px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
-      .owner-contact h2 { margin: 0 0 4px; color: var(--ink); font-size: 16px; }
-      .owner-contact p { margin: 0; }
-      .owner-contact a { color: var(--lime); text-decoration: none; overflow-wrap: anywhere; }
-      .owner-contact a:hover { text-decoration: underline; }
-
-      .feedback-section { width: min(100%, 780px); padding: 24px 0; border-top: 1px solid var(--line); }
-      .feedback-section h2 { margin: 0 0 8px; font-size: 20px; }
-      .feedback-copy { margin: 0 0 18px; color: var(--muted); font-size: 13px; line-height: 1.6; }
-      .feedback-form { display: grid; gap: 12px; }
-      .feedback-form fieldset { padding: 0; margin: 0; border: 0; }
-      .feedback-form legend, .feedback-form label { margin-bottom: 8px; color: var(--ink); font-size: 13px; font-weight: 600; }
-      .feedback-stars { display: flex; flex-direction: row-reverse; justify-content: flex-end; width: max-content; }
-      .feedback-stars input { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-      .feedback-stars label { margin: 0; padding: 2px 5px; color: var(--line); font-size: 30px; line-height: 1; cursor: pointer; transition: color .15s ease; }
-      .feedback-stars input:checked ~ label, .feedback-stars label:hover, .feedback-stars label:hover ~ label { color: var(--orange); }
-      .feedback-stars input:focus-visible + label { outline: 2px solid var(--ink); outline-offset: 2px; }
-      .feedback-comment { width: 100%; min-height: 112px; padding: 12px; border: 1px solid var(--line); border-radius: 0; background: var(--widget-bg); color: var(--ink); font: inherit; line-height: 1.5; resize: vertical; }
-      .feedback-comment:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
-      .feedback-submit { min-height: 44px; justify-self: start; padding: 0 18px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font: inherit; font-weight: 600; cursor: pointer; }
-      .feedback-submit:hover { border-color: var(--lime); color: var(--lime); }
-      .feedback-submit:disabled { cursor: wait; opacity: .65; }
-      .feedback-status { min-height: 18px; margin: 0; color: var(--lime); font-size: 12px; }
-
-      footer { min-height: 64px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; border-top: 1px solid var(--line); color: var(--muted); font: 11px Consolas, monospace; }
-      footer span:last-child { color: var(--lime); }
-      .privacy-link { color: var(--lime); text-decoration: none; }
-      .privacy-link:hover { text-decoration: underline; }
-
-      @media (max-width: 720px) {
-        main { width: min(100% - 32px, 520px); }
-        .header-bar { min-height: 72px; }
-        .top-label { font-size: 9px; }
-        .opening { padding: 22px 0 20px; }
-        .opening-copy { font-size: 13px; }
-        .content { gap: 24px; padding: 36px 0 52px; }
-        .intro { font-size: 15px; }
-        .test-title { font-size: 26px; }
-        .speedtest-metric { min-height: 94px; padding: 12px 9px; }
-        .speedtest-metric-label { font-size: 12px; }
-        .speedtest-reading { gap: 4px; }
-        .speedtest-reading strong { font-size: 23px; }
-        .speedtest-reading span { font-size: 10px; }
-        .download-panel { padding: 21px; }
-        .preview-section { padding-bottom: 56px; }
-        .preview-heading { align-items: center; }
-        .preview-stage { grid-auto-columns: minmax(84%, 1fr); grid-auto-flow: column; grid-template-columns: none; overflow-x: auto; overscroll-behavior-inline: contain; scroll-snap-type: x mandatory; gap: 12px; padding: 8px 4px 12px; }
-        .preview-item { min-height: 320px; }
-        .preview-image { max-height: 270px; }
-        footer { gap: 12px; font-size: 9px; }
-      }
-    </style>
+    <link rel="stylesheet" href="index.min.css" />
+      <script defer src="app.min.js"></script>
   </head>
   <body>
     <main>
@@ -186,83 +17,115 @@
         <div class="header-bar">
           <div class="brand">
             <span class="brand-mark" aria-hidden="true">
-              <img src="1ace2b28-f7fc-4e73-abe7-52dc9e09163b__1_-removebg-preview%20%281%29.webp" alt="" />
+              <img src="1ace2b28-f7fc-4e73-abe7-52dc9e09163b__1_-removebg-preview%20%281%29.webp" alt="" width="500" height="500" decoding="async" />
             </span>
             NexByte Monitor
           </div>
         </div>
       </header>
 
-      <section class="content" aria-labelledby="speedtest-heading">
-        <div class="test-intro">
-          <span class="test-kicker">NEXBYTE MONITOR</span>
-          <h1 class="test-title" id="speedtest-heading">Internet speed test</h1>
-          <p class="intro">Measure your connection's ping, download, and upload speeds.</p>
-        </div>
-
-        <div class="speedtest-panel" aria-label="Internet speed test">
-          <div class="speedtest-metrics">
-            <div class="speedtest-metric">
-              <span class="speedtest-metric-label">Ping</span>
-              <div class="speedtest-reading"><strong id="ping-value">--</strong><span>ms</span></div>
-            </div>
-            <div class="speedtest-metric">
-              <span class="speedtest-metric-label">Download</span>
-              <div class="speedtest-reading"><strong id="download-value">--</strong><span>Mbps</span></div>
-            </div>
-            <div class="speedtest-metric">
-              <span class="speedtest-metric-label">Upload</span>
-              <div class="speedtest-reading"><strong id="upload-value">--</strong><span>Mbps</span></div>
-            </div>
-          </div>
-          <button class="speedtest-button" id="speedtest-button" type="button">Start test</button>
-          <p class="speedtest-status" id="speedtest-status" role="status" aria-live="polite">Ready to test</p>
-          <p class="speedtest-note">Testing is powered by Cloudflare. Measurement data is also collected for aggregated network quality analysis.</p>
+      <section class="content" aria-labelledby="monitor-heading">
+        <div class="monitor-intro">
+          <span class="monitor-kicker">WINDOWS NETWORK MONITOR</span>
+          <h1 class="monitor-title" id="monitor-heading">NexByte Monitor</h1>
+          <p class="monitor-copy">A compact desktop monitor for connection stats, with adjustable size, transparency, and themes.</p>
         </div>
 
         <div class="download-panel">
           <div class="file-heading">
-            <div class="file-icon" aria-hidden="true">ZIP</div>
+            <img class="file-icon" src="1ace2b28-f7fc-4e73-abe7-52dc9e09163b__1_-removebg-preview%20%281%29.webp" alt="" width="500" height="500" decoding="async" aria-hidden="true" />
             <div>
               <h2 id="download-heading">NexByte Monitor</h2>
-              <div class="file-name">NexByte-Monitor.zip</div>
+              <div class="file-name">NexByte.Monitor.1.0.0.exe</div>
             </div>
           </div>
           <div class="details">
-            <span>Platform <strong>Windows</strong></span>
-            <span>Format <strong>ZIP</strong></span>
+            <span>Support <strong>Windows 10/11</strong></span>
+            <span>Format <strong>EXE</strong></span>
+            <span>Size <strong>100.3 MB</strong></span>
+            <span>Updated <strong>09/29/2026</strong></span>
           </div>
+          <p class="download-count"><strong>200+</strong> people have downloaded</p>
           <form class="download-form" id="download-form">
             <button class="download-button" id="download-button" type="submit">
-              <span aria-hidden="true">&#8599;</span> Open file on Google Drive
+              <span aria-hidden="true">&#8599;</span> Download for Windows
             </button>
-            <p class="tracking-note">Download clicks are recorded without your name.</p>
             <p class="tracking-status" id="tracking-status" role="status" aria-live="polite"></p>
           </form>
           <p class="notice"><b>!</b><span>Note: If the &quot;Windows protected your PC&quot; warning appears during installation, select <strong>More info</strong>, then choose <strong>Run anyway</strong>. This application is 100% safe.</span></p>
         </div>
+
+        <section class="features-section" aria-labelledby="features-title">
+          <h2 id="features-title">Key advantages</h2>
+          <div class="features-grid">
+            <article class="feature-item">
+              <h3>Connection metrics at a glance</h3>
+              <p>View ping, download speed, and upload speed together in one place.</p>
+            </article>
+            <article class="feature-item">
+              <h3>Convenient idle display</h3>
+              <p>Keep an at-a-glance monitor available between speed tests.</p>
+            </article>
+            <article class="feature-item">
+              <h3>Personalized appearance</h3>
+              <p>Adjust the monitor size and transparency, then choose a theme.</p>
+            </article>
+            <article class="feature-item">
+              <h3>On-demand speed test</h3>
+              <p>Check your connection with Cloudflare-powered ping, download, and upload measurements.</p>
+            </article>
+          </div>
+        </section>
       </section>
 
       <section class="preview-section" aria-labelledby="preview-title">
         <div class="preview-heading">
           <h2 id="preview-title">App preview</h2>
-          <span class="preview-caption">APP SCREENSHOTS</span>
+          <span class="preview-caption">FOUR APP SCREENS</span>
         </div>
-        <div class="preview-stage">
-          <figure class="preview-item">
-            <img class="preview-image" src="Screenshot%202026-09-29%20131137.webp" alt="NexByte Monitor screenshot 1" loading="lazy" />
-            <figcaption>View 01</figcaption>
-          </figure>
-          <figure class="preview-item">
-            <img class="preview-image" src="Screenshot%202026-09-29%20131103.webp" alt="NexByte Monitor screenshot 2" loading="lazy" />
-            <figcaption>View 02</figcaption>
-          </figure>
-          <figure class="preview-item">
-            <img class="preview-image" src="Screenshot%202026-09-29%20131155.webp" alt="NexByte Monitor screenshot 3" loading="lazy" />
-            <figcaption>View 03</figcaption>
-          </figure>
+        <div class="preview-stage" id="preview-carousel" role="region" aria-roledescription="carousel" aria-label="Application previews">
+          <div class="preview-carousel-window">
+            <div class="preview-carousel-track" id="preview-track">
+              <figure class="preview-item" role="group" aria-roledescription="slide" aria-label="1 of 4">
+                <img class="preview-image" src="preview-1.webp" alt="NexByte Monitor main monitor display at 150% scale" width="1919" height="1079" loading="lazy" decoding="async" />
+                <figcaption>Keep an eye on your connection stats with this minimal, unobtrusive monitor display.</figcaption>
+              </figure>
+              <figure class="preview-item" role="group" aria-roledescription="slide" aria-label="2 of 4">
+                <img class="preview-image" src="preview-2.webp" alt="NexByte Monitor idle display" width="694" height="526" loading="lazy" decoding="async" />
+                <figcaption>A calm, compact idle view keeps the monitor ready between speed tests.</figcaption>
+              </figure>
+              <figure class="preview-item" role="group" aria-roledescription="slide" aria-label="3 of 4">
+                <img class="preview-image" src="preview-3.webp" alt="NexByte Monitor size, transparency, and theme options" width="697" height="489" loading="lazy" decoding="async" />
+                <figcaption>Set the monitor size and transparency, then choose a theme for your desktop.</figcaption>
+              </figure>
+              <figure class="preview-item" role="group" aria-roledescription="slide" aria-label="4 of 4">
+                <img class="preview-image" src="preview-4.webp" alt="NexByte Monitor during a speed test" width="682" height="508" loading="lazy" decoding="async" />
+                <figcaption>Watch ping, download, and upload readings update during a speed test.</figcaption>
+              </figure>
+            </div>
+            <button class="preview-carousel-control preview-carousel-previous" id="carousel-previous" type="button" aria-label="Previous image" title="Previous image"><span aria-hidden="true">&#8592;</span></button>
+            <button class="preview-carousel-control preview-carousel-next" id="carousel-next" type="button" aria-label="Next image" title="Next image"><span aria-hidden="true">&#8594;</span></button>
+          </div>
+          <div class="preview-thumbnails" aria-label="All app previews">
+            <button class="preview-thumbnail" type="button" data-preview-index="0" aria-pressed="true"><img src="preview-1.webp" alt="" width="1919" height="1079" loading="lazy" decoding="async" /><span>Main monitor</span></button>
+            <button class="preview-thumbnail" type="button" data-preview-index="1" aria-pressed="false"><img src="preview-2.webp" alt="" width="694" height="526" loading="lazy" decoding="async" /><span>Idle display</span></button>
+            <button class="preview-thumbnail" type="button" data-preview-index="2" aria-pressed="false"><img src="preview-3.webp" alt="" width="697" height="489" loading="lazy" decoding="async" /><span>Appearance settings</span></button>
+            <button class="preview-thumbnail" type="button" data-preview-index="3" aria-pressed="false"><img src="preview-4.webp" alt="" width="682" height="508" loading="lazy" decoding="async" /><span>Speed test</span></button>
+          </div>
         </div>
       </section>
+
+      <dialog class="preview-dialog" id="preview-dialog" aria-label="Full-size app preview">
+        <div class="preview-dialog-inner">
+          <button class="preview-dialog-close" id="preview-close" type="button" aria-label="Close preview" title="Close preview">&#215;</button>
+          <div class="preview-dialog-stage">
+            <button class="preview-nav preview-previous" id="preview-previous" type="button" aria-label="Previous preview" title="Previous preview"><span aria-hidden="true">&#8592;</span></button>
+            <img class="preview-dialog-image" id="preview-dialog-image" src="" alt="" />
+            <button class="preview-nav preview-next" id="preview-next" type="button" aria-label="Next preview" title="Next preview"><span aria-hidden="true">&#8594;</span></button>
+          </div>
+          <p class="preview-dialog-caption" id="preview-dialog-caption" aria-live="polite"></p>
+        </div>
+      </dialog>
 
       <section class="feedback-section" aria-labelledby="feedback-title">
         <h2 id="feedback-title">Share your experience</h2>
@@ -310,173 +173,6 @@
         <a href="mailto:zenkscammer@gmail.com">zenkscammer@gmail.com</a>
       </section>
     </main>
-      <script>
-        const speedtestButton = document.getElementById("speedtest-button");
-        const speedtestStatus = document.getElementById("speedtest-status");
-        const pingValue = document.getElementById("ping-value");
-        const downloadValue = document.getElementById("download-value");
-        const uploadValue = document.getElementById("upload-value");
-        const metricAnimations = new WeakMap();
-
-        function formatMeasurement(value, divisor) {
-          if (typeof value !== "number" || !Number.isFinite(value)) return "--";
-          return (value / divisor).toFixed(1).replace(/\.0$/, "");
-        }
-
-        function animateMeasurement(element, value, divisor) {
-          if (typeof value !== "number" || !Number.isFinite(value)) return;
-
-          const previous = metricAnimations.get(element);
-          if (previous) cancelAnimationFrame(previous.frame);
-
-          const currentText = Number(element.textContent.replace(",", "."));
-          const startValue = previous ? previous.value : Number.isFinite(currentText) ? currentText : 0;
-          const targetValue = value / divisor;
-          const animation = { value: startValue, frame: 0 };
-          const startedAt = performance.now();
-          const duration = 480;
-          metricAnimations.set(element, animation);
-
-          function step(now) {
-            const progress = Math.min((now - startedAt) / duration, 1);
-            const easedProgress = 1 - Math.pow(1 - progress, 3);
-            animation.value = startValue + (targetValue - startValue) * easedProgress;
-            element.textContent = formatMeasurement(animation.value, 1);
-
-            if (progress < 1) {
-              animation.frame = requestAnimationFrame(step);
-            } else {
-              metricAnimations.delete(element);
-              element.textContent = formatMeasurement(targetValue, 1);
-            }
-          }
-
-          animation.frame = requestAnimationFrame(step);
-        }
-
-        function updateSpeedtestResults(results) {
-          try { animateMeasurement(pingValue, results.getUnloadedLatency(), 1); } catch (error) {}
-          try { animateMeasurement(downloadValue, results.getDownloadBandwidth(), 1000000); } catch (error) {}
-          try { animateMeasurement(uploadValue, results.getUploadBandwidth(), 1000000); } catch (error) {}
-        }
-
-        speedtestButton.addEventListener("click", async () => {
-          speedtestButton.disabled = true;
-          speedtestButton.textContent = "Starting test...";
-          speedtestStatus.textContent = "Connecting to the test server...";
-          [pingValue, downloadValue, uploadValue].forEach((element) => {
-            const animation = metricAnimations.get(element);
-            if (animation) cancelAnimationFrame(animation.frame);
-            metricAnimations.delete(element);
-          });
-          pingValue.textContent = "--";
-          downloadValue.textContent = "--";
-          uploadValue.textContent = "--";
-
-          try {
-            const { default: SpeedTest } = await import("https://cdn.jsdelivr.net/npm/@cloudflare/speedtest@1.14.1/+esm");
-            const speedtest = new SpeedTest({
-              autoStart: false,
-              measurements: [
-                { type: "latency", numPackets: 8 },
-                { type: "download", bytes: 1000000, count: 4 },
-                { type: "upload", bytes: 1000000, count: 4 }
-              ]
-            });
-
-            speedtest.onRunningChange = (running) => {
-              speedtestButton.disabled = running;
-              speedtestButton.textContent = running ? "Test in progress..." : speedtest.isFinished ? "Test again" : "Start test";
-            };
-            speedtest.onResultsChange = (change) => {
-              updateSpeedtestResults(speedtest.results);
-              const stages = { latency: "Measuring ping...", download: "Measuring download speed...", upload: "Measuring upload speed..." };
-              if (stages[change.type]) speedtestStatus.textContent = stages[change.type];
-            };
-            speedtest.onFinish = (results) => {
-              updateSpeedtestResults(results);
-              speedtestStatus.textContent = "Test complete.";
-              speedtestButton.disabled = false;
-              speedtestButton.textContent = "Test again";
-            };
-            speedtest.onError = () => {
-              speedtestStatus.textContent = "The test failed. Check your internet connection and try again.";
-              speedtestButton.disabled = false;
-              speedtestButton.textContent = "Try again";
-            };
-            speedtest.play();
-          } catch (error) {
-            speedtestStatus.textContent = "The test engine could not be loaded. Check your internet connection and try again.";
-            speedtestButton.disabled = false;
-            speedtestButton.textContent = "Try again";
-          }
-        });
-
-        const DOWNLOAD_URL = "https://drive.google.com/file/d/1SBUA8MD2WJOBDQ8cyI9LYJAi56dlk7Su/view?usp=drivesdk";
-        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyAERCzYkzAXd6VR42Jsh-x-lV_83gUYoU11MMFEPNscBeqvu0FPexmxI-PPHlFXiW9pg/exec";
-        const downloadForm = document.getElementById("download-form");
-        const downloadButton = document.getElementById("download-button");
-        const trackingStatus = document.getElementById("tracking-status");
-
-        downloadForm.addEventListener("submit", async (event) => {
-          event.preventDefault();
-
-          if (APPS_SCRIPT_URL === "PASTE_APPS_SCRIPT_WEB_APP_URL_HERE") {
-            trackingStatus.textContent = "Download tracking is not configured yet.";
-            return;
-          }
-
-          window.open(DOWNLOAD_URL, "_blank", "noopener,noreferrer");
-          downloadButton.disabled = true;
-          trackingStatus.textContent = "Recording an anonymous click...";
-
-          try {
-            await fetch(APPS_SCRIPT_URL, {
-              method: "POST",
-              mode: "no-cors",
-              headers: { "Content-Type": "text/plain;charset=utf-8" },
-              body: JSON.stringify({ type: "click" }),
-              keepalive: true
-            });
-            trackingStatus.textContent = "Google Drive opened. Your click was sent anonymously.";
-          } catch (error) {
-            trackingStatus.textContent = "The click could not be sent, but the download was opened.";
-            downloadButton.disabled = false;
-          }
-        });
-
-        const feedbackForm = document.getElementById("feedback-form");
-        const feedbackSubmit = document.getElementById("feedback-submit");
-        const feedbackStatus = document.getElementById("feedback-status");
-
-        feedbackForm.addEventListener("submit", async (event) => {
-          event.preventDefault();
-          if (!feedbackForm.reportValidity()) return;
-
-          const formData = new FormData(feedbackForm);
-          feedbackSubmit.disabled = true;
-          feedbackStatus.textContent = "Sending feedback...";
-
-          try {
-            await fetch(APPS_SCRIPT_URL, {
-              method: "POST",
-              mode: "no-cors",
-              headers: { "Content-Type": "text/plain;charset=utf-8" },
-              body: JSON.stringify({
-                type: "feedback",
-                rating: Number(formData.get("rating")),
-                comment: String(formData.get("comment")).trim()
-              }),
-              keepalive: true
-            });
-            feedbackForm.reset();
-            feedbackStatus.textContent = "Feedback sent. Thank you.";
-          } catch (error) {
-            feedbackStatus.textContent = "Feedback could not be sent. Check your connection and try again.";
-          } finally {
-            feedbackSubmit.disabled = false;
-          }
-        });
-      </script>
+      
   </body>
 </html>
