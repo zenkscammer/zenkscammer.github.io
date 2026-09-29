@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="id">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#101716" />
-    <meta name="description" content="Unduh NexByte Monitor untuk Windows." />
+    <meta name="description" content="Download NexByte Monitor for Windows." />
     <title>NexByte Monitor | Download</title>
     <style>
       :root {
@@ -46,12 +46,12 @@
         min-height: 88px;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
       }
 
       .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: .02em; }
       .brand-mark { width: 40px; height: 40px; display: grid; place-items: center; flex: 0 0 40px; }
-      .brand-mark svg { display: block; width: 40px; height: 40px; }
+      .brand-mark img { display: block; width: 40px; height: 40px; object-fit: contain; }
       .top-label { color: var(--muted); font: 11px/1.4 Consolas, monospace; letter-spacing: .1em; text-transform: uppercase; }
       .opening { max-width: 860px; padding: 28px 0 24px; border-bottom: 1px solid var(--line); }
       .opening-title { max-width: none; margin: 0 0 14px; color: var(--lime); font-size: 18px; line-height: 1.3; letter-spacing: 0; }
@@ -68,8 +68,25 @@
         padding: 48px 0 68px;
       }
 
-      .content > div:first-child { max-width: 520px; text-align: center; }
+      .test-intro { max-width: 520px; text-align: center; }
+      .test-kicker { display: block; margin-bottom: 8px; color: var(--lime); font: 11px/1.4 Consolas, monospace; }
+      .test-title { margin: 0 0 10px; font-size: 30px; line-height: 1.2; }
       .intro { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.7; }
+
+      .speedtest-panel { width: min(100%, 780px); padding: 18px 0 4px; border-block: 1px solid var(--line); }
+      .speedtest-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .speedtest-metric { min-width: 0; min-height: 112px; display: flex; flex-direction: column; justify-content: space-between; gap: 12px; padding: 14px 20px; }
+      .speedtest-metric + .speedtest-metric { border-left: 1px solid var(--line); }
+      .speedtest-metric-label { color: var(--muted); font-size: 13px; }
+      .speedtest-reading { display: flex; align-items: baseline; gap: 7px; white-space: nowrap; }
+      .speedtest-reading strong { color: var(--ink); font: 400 32px/1 Consolas, monospace; font-variant-numeric: tabular-nums; }
+      .speedtest-reading span { color: var(--muted); font-size: 12px; }
+      .speedtest-button { min-width: 190px; min-height: 48px; display: block; padding: 0 20px; margin: 18px auto 10px; border: 0; background: var(--lime); color: #17200f; font: inherit; font-weight: 700; cursor: pointer; }
+      .speedtest-button:hover { background: #d9ff83; }
+      .speedtest-button:focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; }
+      .speedtest-button:disabled { cursor: wait; opacity: .7; }
+      .speedtest-status { min-height: 20px; margin: 0; color: var(--lime); font-size: 13px; text-align: center; }
+      .speedtest-note { margin: 12px 0 0; color: var(--muted); font-size: 11px; line-height: 1.5; text-align: center; }
 
       .download-panel { width: min(100%, 520px); padding: 26px; border: 1px solid var(--line); background: var(--panel); }
       .file-heading { display: flex; align-items: center; gap: 16px; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
@@ -80,9 +97,6 @@
       .details { display: flex; justify-content: space-between; padding: 19px 0 24px; color: var(--muted); font-size: 13px; }
       .details strong { color: var(--ink); font-weight: 500; }
       .download-form { display: grid; gap: 10px; }
-      .download-form label { color: var(--ink); font-size: 13px; font-weight: 600; }
-      .name-input { width: 100%; min-height: 48px; padding: 0 12px; border: 1px solid var(--line); border-radius: 0; background: var(--widget-bg); color: var(--ink); font: inherit; }
-      .name-input:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
       .download-button { width: 100%; min-height: 56px; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 0 18px; border: 0; background: var(--lime); color: #17200f; font: inherit; font-weight: 750; cursor: pointer; transition: background-color .18s ease, transform .18s ease; }
       .download-button:hover { background: #d9ff83; transform: translateY(-2px); }
       .download-button:focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; }
@@ -99,68 +113,46 @@
       .preview-caption { color: var(--muted); font: 11px Consolas, monospace; }
       .preview-stage {
         max-width: 780px;
-        min-height: 290px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 42px;
-        overflow: hidden;
-        padding: 32px 18px;
-        margin: 0 auto;
-        background-color: #202624;
-        background-image: repeating-linear-gradient(135deg, rgba(255, 255, 255, .018) 0 1px, transparent 1px 10px);
-      }
-      .desktop-shortcut { width: 82px; flex: 0 0 82px; display: grid; justify-items: center; gap: 6px; color: #fff; font-size: 13px; line-height: 1.25; text-align: center; text-shadow: 0 1px 3px #111; }
-      .desktop-icon { position: relative; width: 60px; height: 60px; }
-      .desktop-icon svg { display: block; width: 100%; height: 100%; }
-      .shortcut-arrow { position: absolute; bottom: -1px; left: -2px; width: 17px; height: 16px; display: grid; place-items: center; border: 1px solid #657078; background: #edf4f7; color: #0875cf; font-size: 13px; line-height: 1; text-shadow: none; }
-      .network-widget { width: min(100%, 344px); color: #e9eee9; font-family: "Segoe UI", sans-serif; }
-      .speed-card {
-        height: 98px;
-        padding: 7px;
-        border: 2px solid #9cf078;
-        border-radius: 11px;
-        background: var(--widget-bg);
-        box-shadow: 0 0 18px rgba(0, 0, 0, .3);
-      }
-      .speed-stats { height: 100%; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 5px; }
-      .speed-stat { min-width: 0; padding: 7px 8px; border: 1px solid #293530; border-radius: 7px; background: var(--widget-bg); }
-      .speed-label { color: #a6b0aa; font-size: 9px; line-height: 1.2; }
-      .speed-value { margin-top: 5px; color: #f4f5f1; font-size: 16px; font-weight: 700; white-space: nowrap; }
-      .speed-value small { color: #b9c2bd; font-size: 9px; font-weight: 600; }
-      .speed-tray {
-        position: relative;
-        height: 56px;
         display: grid;
-        grid-template-columns: 1fr 1fr 38px 31px 24px;
-        align-items: center;
-        gap: 3px;
-        margin-top: 5px;
-        padding: 5px 7px;
-        border: 1px solid #3b4240;
-        border-radius: 11px;
-        background: var(--widget-bg);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, .28);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        padding: 12px;
+        margin: 0 auto;
+        border: 1px solid var(--line);
+        background: var(--panel);
       }
-      .tray-indicator { position: absolute; top: 6px; left: 8px; width: 7px; height: 7px; border-radius: 50%; background: #9cf078; box-shadow: 0 0 8px rgba(156, 240, 120, .5); }
-      .traffic { min-width: 0; display: flex; align-items: baseline; gap: 3px; padding: 5px 4px 0 6px; white-space: nowrap; }
-      .traffic + .traffic { border-left: 1px solid #303836; }
-      .traffic-arrow { color: #85e9a0; font-size: 17px; font-weight: 700; }
-      .traffic-value { color: #edf1ec; font: 700 15px Consolas, monospace; }
-      .traffic-unit { color: #a6b0aa; font-size: 8px; font-weight: 600; }
-      .widget-control { height: 36px; display: grid; place-items: center; color: #9da9a3; font-size: 21px; }
-      .widget-control.gauge { border: 1px solid #40554a; border-radius: 9px; background: #1d2a23; }
-      .gauge-mark { position: relative; width: 19px; height: 11px; overflow: hidden; border: 2px solid #9cf078; border-bottom: 0; border-radius: 12px 12px 0 0; }
-      .gauge-mark::after { content: ""; position: absolute; bottom: 0; left: 8px; width: 2px; height: 8px; background: #9cf078; transform: rotate(38deg); transform-origin: bottom; }
-      .widget-control.close { font-size: 17px; font-weight: 600; }
+      .preview-item { min-width: 0; min-height: 270px; display: grid; grid-template-rows: 1fr auto; gap: 12px; padding: 12px; margin: 0; border: 1px solid var(--line); background: var(--base); scroll-snap-align: start; }
+      .preview-image { display: block; max-width: 100%; max-height: 230px; width: auto; height: auto; justify-self: center; align-self: center; object-fit: contain; }
+      .preview-item figcaption { color: var(--muted); font: 11px Consolas, monospace; }
 
       .owner-contact { display: grid; justify-items: center; gap: 6px; padding: 18px 0 22px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+      .owner-contact h2 { margin: 0 0 4px; color: var(--ink); font-size: 16px; }
       .owner-contact p { margin: 0; }
       .owner-contact a { color: var(--lime); text-decoration: none; overflow-wrap: anywhere; }
       .owner-contact a:hover { text-decoration: underline; }
 
+      .feedback-section { width: min(100%, 780px); padding: 24px 0; border-top: 1px solid var(--line); }
+      .feedback-section h2 { margin: 0 0 8px; font-size: 20px; }
+      .feedback-copy { margin: 0 0 18px; color: var(--muted); font-size: 13px; line-height: 1.6; }
+      .feedback-form { display: grid; gap: 12px; }
+      .feedback-form fieldset { padding: 0; margin: 0; border: 0; }
+      .feedback-form legend, .feedback-form label { margin-bottom: 8px; color: var(--ink); font-size: 13px; font-weight: 600; }
+      .feedback-stars { display: flex; flex-direction: row-reverse; justify-content: flex-end; width: max-content; }
+      .feedback-stars input { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+      .feedback-stars label { margin: 0; padding: 2px 5px; color: var(--line); font-size: 30px; line-height: 1; cursor: pointer; transition: color .15s ease; }
+      .feedback-stars input:checked ~ label, .feedback-stars label:hover, .feedback-stars label:hover ~ label { color: var(--orange); }
+      .feedback-stars input:focus-visible + label { outline: 2px solid var(--ink); outline-offset: 2px; }
+      .feedback-comment { width: 100%; min-height: 112px; padding: 12px; border: 1px solid var(--line); border-radius: 0; background: var(--widget-bg); color: var(--ink); font: inherit; line-height: 1.5; resize: vertical; }
+      .feedback-comment:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
+      .feedback-submit { min-height: 44px; justify-self: start; padding: 0 18px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font: inherit; font-weight: 600; cursor: pointer; }
+      .feedback-submit:hover { border-color: var(--lime); color: var(--lime); }
+      .feedback-submit:disabled { cursor: wait; opacity: .65; }
+      .feedback-status { min-height: 18px; margin: 0; color: var(--lime); font-size: 12px; }
+
       footer { min-height: 64px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; border-top: 1px solid var(--line); color: var(--muted); font: 11px Consolas, monospace; }
       footer span:last-child { color: var(--lime); }
+      .privacy-link { color: var(--lime); text-decoration: none; }
+      .privacy-link:hover { text-decoration: underline; }
 
       @media (max-width: 720px) {
         main { width: min(100% - 32px, 520px); }
@@ -170,19 +162,18 @@
         .opening-copy { font-size: 13px; }
         .content { gap: 24px; padding: 36px 0 52px; }
         .intro { font-size: 15px; }
+        .test-title { font-size: 26px; }
+        .speedtest-metric { min-height: 94px; padding: 12px 9px; }
+        .speedtest-metric-label { font-size: 12px; }
+        .speedtest-reading { gap: 4px; }
+        .speedtest-reading strong { font-size: 23px; }
+        .speedtest-reading span { font-size: 10px; }
         .download-panel { padding: 21px; }
         .preview-section { padding-bottom: 56px; }
         .preview-heading { align-items: center; }
-        .preview-stage { min-height: 330px; flex-direction: column; gap: 22px; padding: 24px 12px; }
-        .desktop-shortcut { width: auto; flex-basis: auto; }
-        .speed-stat { padding: 7px 5px; }
-        .speed-value { font-size: 14px; }
-        .speed-tray { grid-template-columns: 1fr 1fr 34px 26px 20px; gap: 1px; padding-inline: 5px; }
-        .traffic { gap: 2px; padding-left: 4px; }
-        .traffic-value { font-size: 13px; }
-        .traffic-unit { font-size: 7px; }
-        .widget-control { font-size: 18px; }
-        .widget-control.close { font-size: 15px; }
+        .preview-stage { grid-auto-columns: minmax(84%, 1fr); grid-auto-flow: column; grid-template-columns: none; overflow-x: auto; overscroll-behavior-inline: contain; scroll-snap-type: x mandatory; gap: 12px; padding: 8px 4px 12px; }
+        .preview-item { min-height: 320px; }
+        .preview-image { max-height: 270px; }
         footer { gap: 12px; font-size: 9px; }
       }
     </style>
@@ -193,21 +184,38 @@
         <div class="header-bar">
           <div class="brand">
             <span class="brand-mark" aria-hidden="true">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="2" y="2" width="44" height="44" rx="11" fill="#090D0C" />
-                <path d="M39.2 15.2A17 17 0 1 1 24 7" stroke="#C9F36A" stroke-width="3" stroke-linecap="round" />
-                <path d="M5 25h8l3-8 5 17 5-20 4 12h5l3-5h5" stroke="#C9F36A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
+              <img src="1ace2b28-f7fc-4e73-abe7-52dc9e09163b__1_-removebg-preview%20%281%29.webp" alt="" />
             </span>
             NexByte Monitor
           </div>
-          <span class="top-label">Permohonan Pengujian</span>
         </div>
       </header>
 
-      <section class="content" aria-labelledby="download-heading">
-        <div>
-          <p class="intro">NexByte Monitor tersedia untuk Windows melalui Google Drive.</p>
+      <section class="content" aria-labelledby="speedtest-heading">
+        <div class="test-intro">
+          <span class="test-kicker">NEXBYTE MONITOR</span>
+          <h1 class="test-title" id="speedtest-heading">Internet speed test</h1>
+          <p class="intro">Measure your connection's ping, download, and upload speeds.</p>
+        </div>
+
+        <div class="speedtest-panel" aria-label="Internet speed test">
+          <div class="speedtest-metrics">
+            <div class="speedtest-metric">
+              <span class="speedtest-metric-label">Ping</span>
+              <div class="speedtest-reading"><strong id="ping-value">--</strong><span>ms</span></div>
+            </div>
+            <div class="speedtest-metric">
+              <span class="speedtest-metric-label">Download</span>
+              <div class="speedtest-reading"><strong id="download-value">--</strong><span>Mbps</span></div>
+            </div>
+            <div class="speedtest-metric">
+              <span class="speedtest-metric-label">Upload</span>
+              <div class="speedtest-reading"><strong id="upload-value">--</strong><span>Mbps</span></div>
+            </div>
+          </div>
+          <button class="speedtest-button" id="speedtest-button" type="button">Start test</button>
+          <p class="speedtest-status" id="speedtest-status" role="status" aria-live="polite">Ready to test</p>
+          <p class="speedtest-note">Testing is powered by Cloudflare. Measurement data is also collected for aggregated network quality analysis.</p>
         </div>
 
         <div class="download-panel">
@@ -223,80 +231,187 @@
             <span>Format <strong>ZIP</strong></span>
           </div>
           <form class="download-form" id="download-form">
-            <label for="visitor-name">Nama Anda</label>
-            <input class="name-input" id="visitor-name" name="name" type="text" maxlength="100" autocomplete="nickname" placeholder="Contoh: Zenk, Z, atau @username" required />
             <button class="download-button" id="download-button" type="submit">
-              <span aria-hidden="true">&#8599;</span> Buka file di Google Drive
+              <span aria-hidden="true">&#8599;</span> Open file on Google Drive
             </button>
-            <p class="tracking-note">Nama disimpan sementara hingga 30 hari, maksimal 1.000 klik.</p>
+            <p class="tracking-note">Download clicks are recorded without your name.</p>
             <p class="tracking-status" id="tracking-status" role="status" aria-live="polite"></p>
           </form>
-          <p class="notice"><b>!</b><span>Catatan: Jika muncul peringatan &quot;Windows protected your PC&quot; saat instalasi, klik <strong>More Info</strong> lalu pilih <strong>Run Anyway</strong>. Aplikasi ini 100% aman.</span></p>
-        </div>
-      </section>
-
-      <section class="opening" aria-labelledby="opening-title">
-        <h1 class="opening-title" id="opening-title">Pengantar</h1>
-        <div class="opening-copy">
-          <p>Halo,</p>
-          <p>Dengan hormat, saya memohon kesediaan Anda untuk menguji aplikasi sederhana yang sedang saya kembangkan, yaitu Speed Test Mbps.</p>
-          <p>Aplikasi ini digunakan untuk mengukur kecepatan unduh dan unggah koneksi internet. Saat ini aplikasi masih dalam tahap pengembangan. Karena itu, saya mengharapkan masukan mengenai kelayakan, performa, dan kemudahan penggunaannya.</p>
-          <p>Masukan Anda akan membantu saya meningkatkan kualitas, stabilitas, dan kenyamanan penggunaan aplikasi ini.</p>
-          <p>Terima kasih atas waktu dan dukungan Anda.</p>
-          <p class="signoff">Hormat saya,<br />Zenk</p>
+          <p class="notice"><b>!</b><span>Note: If the &quot;Windows protected your PC&quot; warning appears during installation, select <strong>More info</strong>, then choose <strong>Run anyway</strong>. This application is 100% safe.</span></p>
         </div>
       </section>
 
       <section class="preview-section" aria-labelledby="preview-title">
         <div class="preview-heading">
-          <h2 id="preview-title">Pratinjau aplikasi</h2>
-          <span class="preview-caption">CONTOH TAMPILAN / ANGKA ILUSTRASI</span>
+          <h2 id="preview-title">App preview</h2>
+          <span class="preview-caption">APP SCREENSHOTS</span>
         </div>
         <div class="preview-stage">
-          <div class="desktop-shortcut" role="img" aria-label="Ikon desktop NexByte Monitor">
-            <div class="desktop-icon">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect x="2" y="2" width="44" height="44" rx="11" fill="#090D0C" />
-                <path d="M39.2 15.2A17 17 0 1 1 24 7" stroke="#C9F36A" stroke-width="3" stroke-linecap="round" />
-                <path d="M5 25h8l3-8 5 17 5-20 4 12h5l3-5h5" stroke="#C9F36A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-              <span class="shortcut-arrow" aria-hidden="true">&#8599;</span>
-            </div>
-            <span>NexByte<br />Monitor</span>
-          </div>
-          <div class="network-widget" role="img" aria-label="Contoh widget pemantau jaringan: ping 95 milidetik, download 88,1 Mbps, upload 62,1 Mbps, serta kecepatan langsung">
-            <div class="speed-card">
-              <div class="speed-stats">
-                <div class="speed-stat"><div class="speed-label">Ping</div><div class="speed-value">95 <small>ms</small></div></div>
-                <div class="speed-stat"><div class="speed-label">Download</div><div class="speed-value">88.1 <small>Mbps</small></div></div>
-                <div class="speed-stat"><div class="speed-label">Upload</div><div class="speed-value">62.1 <small>Mbps</small></div></div>
-              </div>
-            </div>
-            <div class="speed-tray">
-              <span class="tray-indicator" aria-hidden="true"></span>
-              <div class="traffic"><span class="traffic-arrow" aria-hidden="true">&#8595;</span><span class="traffic-value">0.14</span><span class="traffic-unit">Mbps</span></div>
-              <div class="traffic"><span class="traffic-arrow" aria-hidden="true">&#8593;</span><span class="traffic-value">5.77</span><span class="traffic-unit">Mbps</span></div>
-              <div class="widget-control gauge" aria-hidden="true"><span class="gauge-mark"></span></div>
-              <div class="widget-control" aria-hidden="true">&#8963;</div>
-              <div class="widget-control close" aria-hidden="true">&times;</div>
-            </div>
-          </div>
+          <figure class="preview-item">
+            <img class="preview-image" src="Screenshot%202026-09-29%20131137.webp" alt="NexByte Monitor screenshot 1" loading="lazy" />
+            <figcaption>View 01</figcaption>
+          </figure>
+          <figure class="preview-item">
+            <img class="preview-image" src="Screenshot%202026-09-29%20131103.webp" alt="NexByte Monitor screenshot 2" loading="lazy" />
+            <figcaption>View 02</figcaption>
+          </figure>
+          <figure class="preview-item">
+            <img class="preview-image" src="Screenshot%202026-09-29%20131155.webp" alt="NexByte Monitor screenshot 3" loading="lazy" />
+            <figcaption>View 03</figcaption>
+          </figure>
         </div>
       </section>
 
-      <div class="owner-contact">
-        <p>Penanggung jawab - Zenk</p>
-        <a href="mailto:zenkscammer@gmail.com">zenkscammer@gmail.com</a>
-      </div>
+      <section class="feedback-section" aria-labelledby="feedback-title">
+        <h2 id="feedback-title">Share your experience</h2>
+        <p class="feedback-copy">Your rating and comments help us improve NexByte Monitor.</p>
+        <form class="feedback-form" id="feedback-form">
+          <fieldset>
+            <legend>Your rating</legend>
+            <div class="feedback-stars">
+              <input id="rating-5" type="radio" name="rating" value="5" required />
+              <label for="rating-5" aria-label="5 stars">&#9733;</label>
+              <input id="rating-4" type="radio" name="rating" value="4" />
+              <label for="rating-4" aria-label="4 stars">&#9733;</label>
+              <input id="rating-3" type="radio" name="rating" value="3" />
+              <label for="rating-3" aria-label="3 stars">&#9733;</label>
+              <input id="rating-2" type="radio" name="rating" value="2" />
+              <label for="rating-2" aria-label="2 stars">&#9733;</label>
+              <input id="rating-1" type="radio" name="rating" value="1" />
+              <label for="rating-1" aria-label="1 star">&#9733;</label>
+            </div>
+          </fieldset>
+          <label for="feedback-comment">Comments</label>
+          <textarea class="feedback-comment" id="feedback-comment" name="comment" maxlength="500" placeholder="How was your experience with NexByte Monitor?" required></textarea>
+          <button class="feedback-submit" id="feedback-submit" type="submit">Send feedback</button>
+          <p class="feedback-status" id="feedback-status" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="opening" aria-labelledby="about-title">
+        <h2 class="opening-title" id="about-title">About Me</h2>
+        <div class="opening-copy">
+          <p>I'm Zenk, the developer of NexByte Monitor.</p>
+          <p>I created NexByte Monitor to help users monitor their internet connection quality by measuring ping, download speed, and upload speed.</p>
+          <p>I'm continually improving the app to make its results clear and easy to use. Questions, feedback, and suggestions are welcome.</p>
+        </div>
+      </section>
 
       <footer>
         <span>NEXBYTE MONITOR / WINDOWS</span>
         <span>COPYRIGHT &copy; 2026 ZSCMMR</span>
+        <a class="privacy-link" href="privacy.html">Privacy Policy</a>
       </footer>
+      <section class="owner-contact" aria-labelledby="contact-title">
+        <h2 id="contact-title">Contact</h2>
+        <p>Zenk</p>
+        <a href="mailto:zenkscammer@gmail.com">zenkscammer@gmail.com</a>
+      </section>
     </main>
       <script>
+        const speedtestButton = document.getElementById("speedtest-button");
+        const speedtestStatus = document.getElementById("speedtest-status");
+        const pingValue = document.getElementById("ping-value");
+        const downloadValue = document.getElementById("download-value");
+        const uploadValue = document.getElementById("upload-value");
+        const metricAnimations = new WeakMap();
+
+        function formatMeasurement(value, divisor) {
+          if (typeof value !== "number" || !Number.isFinite(value)) return "--";
+          return (value / divisor).toFixed(1).replace(/\.0$/, "");
+        }
+
+        function animateMeasurement(element, value, divisor) {
+          if (typeof value !== "number" || !Number.isFinite(value)) return;
+
+          const previous = metricAnimations.get(element);
+          if (previous) cancelAnimationFrame(previous.frame);
+
+          const currentText = Number(element.textContent.replace(",", "."));
+          const startValue = previous ? previous.value : Number.isFinite(currentText) ? currentText : 0;
+          const targetValue = value / divisor;
+          const animation = { value: startValue, frame: 0 };
+          const startedAt = performance.now();
+          const duration = 480;
+          metricAnimations.set(element, animation);
+
+          function step(now) {
+            const progress = Math.min((now - startedAt) / duration, 1);
+            const easedProgress = 1 - Math.pow(1 - progress, 3);
+            animation.value = startValue + (targetValue - startValue) * easedProgress;
+            element.textContent = formatMeasurement(animation.value, 1);
+
+            if (progress < 1) {
+              animation.frame = requestAnimationFrame(step);
+            } else {
+              metricAnimations.delete(element);
+              element.textContent = formatMeasurement(targetValue, 1);
+            }
+          }
+
+          animation.frame = requestAnimationFrame(step);
+        }
+
+        function updateSpeedtestResults(results) {
+          try { animateMeasurement(pingValue, results.getUnloadedLatency(), 1); } catch (error) {}
+          try { animateMeasurement(downloadValue, results.getDownloadBandwidth(), 1000000); } catch (error) {}
+          try { animateMeasurement(uploadValue, results.getUploadBandwidth(), 1000000); } catch (error) {}
+        }
+
+        speedtestButton.addEventListener("click", async () => {
+          speedtestButton.disabled = true;
+          speedtestButton.textContent = "Starting test...";
+          speedtestStatus.textContent = "Connecting to the test server...";
+          [pingValue, downloadValue, uploadValue].forEach((element) => {
+            const animation = metricAnimations.get(element);
+            if (animation) cancelAnimationFrame(animation.frame);
+            metricAnimations.delete(element);
+          });
+          pingValue.textContent = "--";
+          downloadValue.textContent = "--";
+          uploadValue.textContent = "--";
+
+          try {
+            const { default: SpeedTest } = await import("https://cdn.jsdelivr.net/npm/@cloudflare/speedtest@1.14.1/+esm");
+            const speedtest = new SpeedTest({
+              autoStart: false,
+              measurements: [
+                { type: "latency", numPackets: 8 },
+                { type: "download", bytes: 1000000, count: 4 },
+                { type: "upload", bytes: 1000000, count: 4 }
+              ]
+            });
+
+            speedtest.onRunningChange = (running) => {
+              speedtestButton.disabled = running;
+              speedtestButton.textContent = running ? "Test in progress..." : speedtest.isFinished ? "Test again" : "Start test";
+            };
+            speedtest.onResultsChange = (change) => {
+              updateSpeedtestResults(speedtest.results);
+              const stages = { latency: "Measuring ping...", download: "Measuring download speed...", upload: "Measuring upload speed..." };
+              if (stages[change.type]) speedtestStatus.textContent = stages[change.type];
+            };
+            speedtest.onFinish = (results) => {
+              updateSpeedtestResults(results);
+              speedtestStatus.textContent = "Test complete.";
+              speedtestButton.disabled = false;
+              speedtestButton.textContent = "Test again";
+            };
+            speedtest.onError = () => {
+              speedtestStatus.textContent = "The test failed. Check your internet connection and try again.";
+              speedtestButton.disabled = false;
+              speedtestButton.textContent = "Try again";
+            };
+            speedtest.play();
+          } catch (error) {
+            speedtestStatus.textContent = "The test engine could not be loaded. Check your internet connection and try again.";
+            speedtestButton.disabled = false;
+            speedtestButton.textContent = "Try again";
+          }
+        });
+
         const DOWNLOAD_URL = "https://drive.google.com/file/d/1SBUA8MD2WJOBDQ8cyI9LYJAi56dlk7Su/view?usp=drivesdk";
-        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzbqytGGoz1MLb_bAPvXGOjov92c5rv_Rjofhwn51ucmqbKn6VRZ7rR7RvPUmaYSt-S0A/exec";
+        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyAERCzYkzAXd6VR42Jsh-x-lV_83gUYoU11MMFEPNscBeqvu0FPexmxI-PPHlFXiW9pg/exec";
         const downloadForm = document.getElementById("download-form");
         const downloadButton = document.getElementById("download-button");
         const trackingStatus = document.getElementById("tracking-status");
@@ -305,29 +420,59 @@
           event.preventDefault();
 
           if (APPS_SCRIPT_URL === "PASTE_APPS_SCRIPT_WEB_APP_URL_HERE") {
-            trackingStatus.textContent = "Pencatatan belum aktif. Atur URL Apps Script terlebih dahulu.";
+            trackingStatus.textContent = "Download tracking is not configured yet.";
             return;
           }
 
-          const name = document.getElementById("visitor-name").value.trim();
-          if (!name) return;
-
           window.open(DOWNLOAD_URL, "_blank", "noopener,noreferrer");
           downloadButton.disabled = true;
-          trackingStatus.textContent = "Mengirim nama untuk dicatat...";
+          trackingStatus.textContent = "Recording an anonymous click...";
 
           try {
             await fetch(APPS_SCRIPT_URL, {
               method: "POST",
               mode: "no-cors",
               headers: { "Content-Type": "text/plain;charset=utf-8" },
-              body: JSON.stringify({ name }),
+              body: JSON.stringify({ type: "click" }),
               keepalive: true
             });
-            trackingStatus.textContent = "Permintaan pencatatan dikirim. Google Drive dibuka di tab baru.";
+            trackingStatus.textContent = "Google Drive opened. Your click was sent anonymously.";
           } catch (error) {
-            trackingStatus.textContent = "Pencatatan gagal. Periksa koneksi lalu coba lagi.";
+            trackingStatus.textContent = "The click could not be sent, but the download was opened.";
             downloadButton.disabled = false;
+          }
+        });
+
+        const feedbackForm = document.getElementById("feedback-form");
+        const feedbackSubmit = document.getElementById("feedback-submit");
+        const feedbackStatus = document.getElementById("feedback-status");
+
+        feedbackForm.addEventListener("submit", async (event) => {
+          event.preventDefault();
+          if (!feedbackForm.reportValidity()) return;
+
+          const formData = new FormData(feedbackForm);
+          feedbackSubmit.disabled = true;
+          feedbackStatus.textContent = "Sending feedback...";
+
+          try {
+            await fetch(APPS_SCRIPT_URL, {
+              method: "POST",
+              mode: "no-cors",
+              headers: { "Content-Type": "text/plain;charset=utf-8" },
+              body: JSON.stringify({
+                type: "feedback",
+                rating: Number(formData.get("rating")),
+                comment: String(formData.get("comment")).trim()
+              }),
+              keepalive: true
+            });
+            feedbackForm.reset();
+            feedbackStatus.textContent = "Feedback sent. Thank you.";
+          } catch (error) {
+            feedbackStatus.textContent = "Feedback could not be sent. Check your connection and try again.";
+          } finally {
+            feedbackSubmit.disabled = false;
           }
         });
       </script>
