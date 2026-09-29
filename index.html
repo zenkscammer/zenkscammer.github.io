@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#101716" />
+    <meta name="description" content="Unduh NexByte Monitor untuk Windows." />
+    <title>NexByte Monitor | Download</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --ink: #f3f2e9;
+        --muted: #a6b0a8;
+        --base: #101716;
+        --panel: #192220;
+        --widget-bg: #101614;
+        --line: #34423d;
+        --lime: #c9f36a;
+        --orange: #ff875e;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        background-color: var(--base);
+        background-image: linear-gradient(145deg, rgba(201, 243, 106, .035), transparent 42%), repeating-linear-gradient(135deg, rgba(255, 255, 255, .012) 0 1px, transparent 1px 12px);
+        color: var(--ink);
+        font-family: "Segoe UI", "Trebuchet MS", sans-serif;
+      }
+
+      main {
+        width: min(100% - 40px, 1080px);
+        min-height: 100vh;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+      }
+
+      header {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .header-bar {
+        min-height: 88px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: .02em; }
+      .brand-mark { width: 40px; height: 40px; display: grid; place-items: center; flex: 0 0 40px; }
+      .brand-mark svg { display: block; width: 40px; height: 40px; }
+      .top-label { color: var(--muted); font: 11px/1.4 Consolas, monospace; letter-spacing: .1em; text-transform: uppercase; }
+      .opening { max-width: 860px; padding: 28px 0 24px; border-bottom: 1px solid var(--line); }
+      .opening-title { max-width: none; margin: 0 0 14px; color: var(--lime); font-size: 18px; line-height: 1.3; letter-spacing: 0; }
+      .opening-copy { color: var(--muted); font-size: 14px; line-height: 1.65; }
+      .opening-copy p { margin: 0 0 10px; }
+      .opening-copy .signoff { margin-top: 14px; color: var(--ink); }
+      .content {
+        flex: 0 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 22px;
+        padding: 48px 0 68px;
+      }
+
+      .content > div:first-child { max-width: 520px; text-align: center; }
+      .intro { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.7; }
+
+      .download-panel { width: min(100%, 520px); padding: 26px; border: 1px solid var(--line); background: var(--panel); }
+      .file-heading { display: flex; align-items: center; gap: 16px; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+      .file-icon { width: 50px; height: 58px; display: grid; place-items: center; border: 1px solid #61705e; color: var(--lime); font: 11px Consolas, monospace; position: relative; }
+      .file-icon::after { content: ""; position: absolute; top: -1px; right: -1px; width: 13px; height: 13px; border-left: 1px solid #61705e; border-bottom: 1px solid #61705e; background: var(--panel); }
+      h2 { margin: 0 0 7px; font-size: 18px; }
+      .file-name { color: var(--muted); font: 12px Consolas, monospace; overflow-wrap: anywhere; }
+      .details { display: flex; justify-content: space-between; padding: 19px 0 24px; color: var(--muted); font-size: 13px; }
+      .details strong { color: var(--ink); font-weight: 500; }
+      .download-form { display: grid; gap: 10px; }
+      .download-form label { color: var(--ink); font-size: 13px; font-weight: 600; }
+      .name-input { width: 100%; min-height: 48px; padding: 0 12px; border: 1px solid var(--line); border-radius: 0; background: var(--widget-bg); color: var(--ink); font: inherit; }
+      .name-input:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
+      .download-button { width: 100%; min-height: 56px; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 0 18px; border: 0; background: var(--lime); color: #17200f; font: inherit; font-weight: 750; cursor: pointer; transition: background-color .18s ease, transform .18s ease; }
+      .download-button:hover { background: #d9ff83; transform: translateY(-2px); }
+      .download-button:focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; }
+      .download-button:disabled { cursor: wait; opacity: .7; }
+      .download-button span { font-size: 20px; line-height: 1; }
+      .tracking-note, .tracking-status { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+      .tracking-status { min-height: 18px; color: var(--lime); }
+      .notice { display: flex; gap: 10px; margin: 17px 0 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+      .notice b { color: var(--orange); font-weight: 600; }
+
+      .preview-section { padding: 0 0 84px; }
+      .preview-heading { max-width: 780px; display: flex; flex-direction: column; align-items: center; gap: 8px; margin: 0 auto 18px; text-align: center; }
+      .preview-heading h2 { margin: 0; font-size: 21px; }
+      .preview-caption { color: var(--muted); font: 11px Consolas, monospace; }
+      .preview-stage {
+        max-width: 780px;
+        min-height: 290px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 42px;
+        overflow: hidden;
+        padding: 32px 18px;
+        margin: 0 auto;
+        background-color: #202624;
+        background-image: repeating-linear-gradient(135deg, rgba(255, 255, 255, .018) 0 1px, transparent 1px 10px);
+      }
+      .desktop-shortcut { width: 82px; flex: 0 0 82px; display: grid; justify-items: center; gap: 6px; color: #fff; font-size: 13px; line-height: 1.25; text-align: center; text-shadow: 0 1px 3px #111; }
+      .desktop-icon { position: relative; width: 60px; height: 60px; }
+      .desktop-icon svg { display: block; width: 100%; height: 100%; }
+      .shortcut-arrow { position: absolute; bottom: -1px; left: -2px; width: 17px; height: 16px; display: grid; place-items: center; border: 1px solid #657078; background: #edf4f7; color: #0875cf; font-size: 13px; line-height: 1; text-shadow: none; }
+      .network-widget { width: min(100%, 344px); color: #e9eee9; font-family: "Segoe UI", sans-serif; }
+      .speed-card {
+        height: 98px;
+        padding: 7px;
+        border: 2px solid #9cf078;
+        border-radius: 11px;
+        background: var(--widget-bg);
+        box-shadow: 0 0 18px rgba(0, 0, 0, .3);
+      }
+      .speed-stats { height: 100%; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 5px; }
+      .speed-stat { min-width: 0; padding: 7px 8px; border: 1px solid #293530; border-radius: 7px; background: var(--widget-bg); }
+      .speed-label { color: #a6b0aa; font-size: 9px; line-height: 1.2; }
+      .speed-value { margin-top: 5px; color: #f4f5f1; font-size: 16px; font-weight: 700; white-space: nowrap; }
+      .speed-value small { color: #b9c2bd; font-size: 9px; font-weight: 600; }
+      .speed-tray {
+        position: relative;
+        height: 56px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 38px 31px 24px;
+        align-items: center;
+        gap: 3px;
+        margin-top: 5px;
+        padding: 5px 7px;
+        border: 1px solid #3b4240;
+        border-radius: 11px;
+        background: var(--widget-bg);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, .28);
+      }
+      .tray-indicator { position: absolute; top: 6px; left: 8px; width: 7px; height: 7px; border-radius: 50%; background: #9cf078; box-shadow: 0 0 8px rgba(156, 240, 120, .5); }
+      .traffic { min-width: 0; display: flex; align-items: baseline; gap: 3px; padding: 5px 4px 0 6px; white-space: nowrap; }
+      .traffic + .traffic { border-left: 1px solid #303836; }
+      .traffic-arrow { color: #85e9a0; font-size: 17px; font-weight: 700; }
+      .traffic-value { color: #edf1ec; font: 700 15px Consolas, monospace; }
+      .traffic-unit { color: #a6b0aa; font-size: 8px; font-weight: 600; }
+      .widget-control { height: 36px; display: grid; place-items: center; color: #9da9a3; font-size: 21px; }
+      .widget-control.gauge { border: 1px solid #40554a; border-radius: 9px; background: #1d2a23; }
+      .gauge-mark { position: relative; width: 19px; height: 11px; overflow: hidden; border: 2px solid #9cf078; border-bottom: 0; border-radius: 12px 12px 0 0; }
+      .gauge-mark::after { content: ""; position: absolute; bottom: 0; left: 8px; width: 2px; height: 8px; background: #9cf078; transform: rotate(38deg); transform-origin: bottom; }
+      .widget-control.close { font-size: 17px; font-weight: 600; }
+
+      .owner-contact { display: grid; justify-items: center; gap: 6px; padding: 18px 0 22px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+      .owner-contact p { margin: 0; }
+      .owner-contact a { color: var(--lime); text-decoration: none; overflow-wrap: anywhere; }
+      .owner-contact a:hover { text-decoration: underline; }
+
+      footer { min-height: 64px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; border-top: 1px solid var(--line); color: var(--muted); font: 11px Consolas, monospace; }
+      footer span:last-child { color: var(--lime); }
+
+      @media (max-width: 720px) {
+        main { width: min(100% - 32px, 520px); }
+        .header-bar { min-height: 72px; }
+        .top-label { font-size: 9px; }
+        .opening { padding: 22px 0 20px; }
+        .opening-copy { font-size: 13px; }
+        .content { gap: 24px; padding: 36px 0 52px; }
+        .intro { font-size: 15px; }
+        .download-panel { padding: 21px; }
+        .preview-section { padding-bottom: 56px; }
+        .preview-heading { align-items: center; }
+        .preview-stage { min-height: 330px; flex-direction: column; gap: 22px; padding: 24px 12px; }
+        .desktop-shortcut { width: auto; flex-basis: auto; }
+        .speed-stat { padding: 7px 5px; }
+        .speed-value { font-size: 14px; }
+        .speed-tray { grid-template-columns: 1fr 1fr 34px 26px 20px; gap: 1px; padding-inline: 5px; }
+        .traffic { gap: 2px; padding-left: 4px; }
+        .traffic-value { font-size: 13px; }
+        .traffic-unit { font-size: 7px; }
+        .widget-control { font-size: 18px; }
+        .widget-control.close { font-size: 15px; }
+        footer { gap: 12px; font-size: 9px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div class="header-bar">
+          <div class="brand">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="2" y="2" width="44" height="44" rx="11" fill="#090D0C" />
+                <path d="M39.2 15.2A17 17 0 1 1 24 7" stroke="#C9F36A" stroke-width="3" stroke-linecap="round" />
+                <path d="M5 25h8l3-8 5 17 5-20 4 12h5l3-5h5" stroke="#C9F36A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            NexByte Monitor
+          </div>
+          <span class="top-label">Permohonan Pengujian</span>
+        </div>
+      </header>
+
+      <section class="content" aria-labelledby="download-heading">
+        <div>
+          <p class="intro">NexByte Monitor tersedia untuk Windows melalui Google Drive.</p>
+        </div>
+
+        <div class="download-panel">
+          <div class="file-heading">
+            <div class="file-icon" aria-hidden="true">ZIP</div>
+            <div>
+              <h2 id="download-heading">NexByte Monitor</h2>
+              <div class="file-name">NexByte-Monitor.zip</div>
+            </div>
+          </div>
+          <div class="details">
+            <span>Platform <strong>Windows</strong></span>
+            <span>Format <strong>ZIP</strong></span>
+          </div>
+          <form class="download-form" id="download-form">
+            <label for="visitor-name">Nama Anda</label>
+            <input class="name-input" id="visitor-name" name="name" type="text" maxlength="100" autocomplete="nickname" placeholder="Contoh: Zenk, Z, atau @username" required />
+            <button class="download-button" id="download-button" type="submit">
+              <span aria-hidden="true">&#8599;</span> Buka file di Google Drive
+            </button>
+            <p class="tracking-note">Nama disimpan sementara hingga 30 hari, maksimal 1.000 klik.</p>
+            <p class="tracking-status" id="tracking-status" role="status" aria-live="polite"></p>
+          </form>
+          <p class="notice"><b>!</b><span>Catatan: Jika muncul peringatan &quot;Windows protected your PC&quot; saat instalasi, klik <strong>More Info</strong> lalu pilih <strong>Run Anyway</strong>. Aplikasi ini 100% aman.</span></p>
+        </div>
+      </section>
+
+      <section class="opening" aria-labelledby="opening-title">
+        <h1 class="opening-title" id="opening-title">Pengantar</h1>
+        <div class="opening-copy">
+          <p>Halo,</p>
+          <p>Dengan hormat, saya memohon kesediaan Anda untuk menguji aplikasi sederhana yang sedang saya kembangkan, yaitu Speed Test Mbps.</p>
+          <p>Aplikasi ini digunakan untuk mengukur kecepatan unduh dan unggah koneksi internet. Saat ini aplikasi masih dalam tahap pengembangan. Karena itu, saya mengharapkan masukan mengenai kelayakan, performa, dan kemudahan penggunaannya.</p>
+          <p>Masukan Anda akan membantu saya meningkatkan kualitas, stabilitas, dan kenyamanan penggunaan aplikasi ini.</p>
+          <p>Terima kasih atas waktu dan dukungan Anda.</p>
+          <p class="signoff">Hormat saya,<br />Zenk</p>
+        </div>
+      </section>
+
+      <section class="preview-section" aria-labelledby="preview-title">
+        <div class="preview-heading">
+          <h2 id="preview-title">Pratinjau aplikasi</h2>
+          <span class="preview-caption">CONTOH TAMPILAN / ANGKA ILUSTRASI</span>
+        </div>
+        <div class="preview-stage">
+          <div class="desktop-shortcut" role="img" aria-label="Ikon desktop NexByte Monitor">
+            <div class="desktop-icon">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2" y="2" width="44" height="44" rx="11" fill="#090D0C" />
+                <path d="M39.2 15.2A17 17 0 1 1 24 7" stroke="#C9F36A" stroke-width="3" stroke-linecap="round" />
+                <path d="M5 25h8l3-8 5 17 5-20 4 12h5l3-5h5" stroke="#C9F36A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <span class="shortcut-arrow" aria-hidden="true">&#8599;</span>
+            </div>
+            <span>NexByte<br />Monitor</span>
+          </div>
+          <div class="network-widget" role="img" aria-label="Contoh widget pemantau jaringan: ping 95 milidetik, download 88,1 Mbps, upload 62,1 Mbps, serta kecepatan langsung">
+            <div class="speed-card">
+              <div class="speed-stats">
+                <div class="speed-stat"><div class="speed-label">Ping</div><div class="speed-value">95 <small>ms</small></div></div>
+                <div class="speed-stat"><div class="speed-label">Download</div><div class="speed-value">88.1 <small>Mbps</small></div></div>
+                <div class="speed-stat"><div class="speed-label">Upload</div><div class="speed-value">62.1 <small>Mbps</small></div></div>
+              </div>
+            </div>
+            <div class="speed-tray">
+              <span class="tray-indicator" aria-hidden="true"></span>
+              <div class="traffic"><span class="traffic-arrow" aria-hidden="true">&#8595;</span><span class="traffic-value">0.14</span><span class="traffic-unit">Mbps</span></div>
+              <div class="traffic"><span class="traffic-arrow" aria-hidden="true">&#8593;</span><span class="traffic-value">5.77</span><span class="traffic-unit">Mbps</span></div>
+              <div class="widget-control gauge" aria-hidden="true"><span class="gauge-mark"></span></div>
+              <div class="widget-control" aria-hidden="true">&#8963;</div>
+              <div class="widget-control close" aria-hidden="true">&times;</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="owner-contact">
+        <p>Penanggung jawab - Zenk</p>
+        <a href="mailto:zenkscammer@gmail.com">zenkscammer@gmail.com</a>
+      </div>
+
+      <footer>
+        <span>NEXBYTE MONITOR / WINDOWS</span>
+        <span>COPYRIGHT &copy; 2026 ZSCMMR</span>
+      </footer>
+    </main>
+      <script>
+        const DOWNLOAD_URL = "https://drive.google.com/file/d/1SBUA8MD2WJOBDQ8cyI9LYJAi56dlk7Su/view?usp=drivesdk";
+        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzbqytGGoz1MLb_bAPvXGOjov92c5rv_Rjofhwn51ucmqbKn6VRZ7rR7RvPUmaYSt-S0A/exec";
+        const downloadForm = document.getElementById("download-form");
+        const downloadButton = document.getElementById("download-button");
+        const trackingStatus = document.getElementById("tracking-status");
+
+        downloadForm.addEventListener("submit", async (event) => {
+          event.preventDefault();
+
+          if (APPS_SCRIPT_URL === "PASTE_APPS_SCRIPT_WEB_APP_URL_HERE") {
+            trackingStatus.textContent = "Pencatatan belum aktif. Atur URL Apps Script terlebih dahulu.";
+            return;
+          }
+
+          const name = document.getElementById("visitor-name").value.trim();
+          if (!name) return;
+
+          window.open(DOWNLOAD_URL, "_blank", "noopener,noreferrer");
+          downloadButton.disabled = true;
+          trackingStatus.textContent = "Mengirim nama untuk dicatat...";
+
+          try {
+            await fetch(APPS_SCRIPT_URL, {
+              method: "POST",
+              mode: "no-cors",
+              headers: { "Content-Type": "text/plain;charset=utf-8" },
+              body: JSON.stringify({ name }),
+              keepalive: true
+            });
+            trackingStatus.textContent = "Permintaan pencatatan dikirim. Google Drive dibuka di tab baru.";
+          } catch (error) {
+            trackingStatus.textContent = "Pencatatan gagal. Periksa koneksi lalu coba lagi.";
+            downloadButton.disabled = false;
+          }
+        });
+      </script>
+  </body>
+</html>
